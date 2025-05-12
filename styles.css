@@ -1,0 +1,306 @@
+/* Global Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    background-color: #050a14; /* Dark fallback */
+    background-image: url('oop.jpg'); /* User-provided background */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps background stationary during scroll */
+    color: #E0E8FF; /* Light, slightly desaturated blue for text */
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    scroll-snap-type: y mandatory; /* Enable vertical scroll snapping */
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #4DFFFF; /* Vibrant blue accent */
+    margin-top: 0;
+}
+
+a {
+    color: #4DFFFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+main {
+    /* max-width: 1000px; */ /* REMOVED for full-page sections */
+    /* margin: 0 auto; */ /* REMOVED */
+    /* main will be removed from HTML, so styles are not needed or will be on body/sections directly */
+}
+
+/* Common styles for SNAP TARGETS (hero and sections) */
+header.hero,
+section {
+    min-height: 100vh; /* Ensure they take at least full viewport height for snapping */
+    width: 100%;
+    scroll-snap-align: start;
+    box-sizing: border-box;
+    overflow-y: auto; /* Allow internal scrolling if content wrapper itself is very tall */
+    padding: 20px; /* Padding for the 100vh snap area, around the content wrapper */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the content wrapper */
+    align-items: center; /* Horizontally center the content wrapper */
+}
+
+.section-content-wrapper {
+    max-width: 1000px;
+    width: 100%;
+    background-color: rgba(10, 20, 40, 0.7); /* Moved from section to here */
+    border-radius: 8px; /* Moved from section to here */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Moved from section to here */
+    padding: 40px 20px; /* Internal padding for the content block */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content like h2, p within the wrapper */
+    text-align: left; /* Default text align for content, can be overridden */
+}
+
+section {
+    margin-bottom: 0; /* Remove margin as sections will snap */
+    background-color: transparent; /* Section itself is transparent */
+    /* border-radius and box-shadow are now on .section-content-wrapper */
+    font-size: 1.1rem; /* Increased font size for all sections */
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    background-color: rgba(0,0,0,0.2); /* Slight darkening overlay for hero text readability */
+    /* min-height, scroll-snap-align, display, padding etc. from common rule */
+}
+
+.hero-content {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* No background/border/shadow for hero-content, it's part of the hero's full-width feel */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    color: #FFFFFF; /* Brighter white for main title */
+    text-shadow: 0 0 10px #4DFFFF, 0 0 20px #4DFFFF;
+}
+
+.hero .tagline {
+    font-size: 1.5rem;
+    color: #E0E8FF;
+    font-weight: 300;
+}
+
+.hero-button {
+    display: inline-block;
+    margin-top: 20px; /* Add space above the button */
+    padding: 12px 25px;
+    background-color: #4DFFFF;
+    color: #050a14;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: #88FFFF;
+    text-decoration: none;
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Hero Icons */
+.hero-icons {
+    margin-top: 15px; /* Space above icons */
+    margin-bottom: 25px; /* Space below icons, above button */
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between icons */
+}
+
+.hero-icons a {
+    color: #E0E8FF; /* Use the light text color */
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Needed for transform */
+}
+
+.hero-icons a:hover {
+    color: #4DFFFF; /* Accent color on hover */
+    transform: scale(1.1); /* Slightly enlarge icon on hover */
+    text-decoration: none; /* Remove underline on hover */
+}
+
+.hero-icons svg {
+    width: 28px; /* Icon size */
+    height: 28px;
+    vertical-align: middle; /* Align icons nicely if text were next to them */
+}
+
+
+/* About Section */
+#about h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%; /* Ensure h2 takes width for text-align within flex parent */
+}
+
+#about .section-content-wrapper p {
+    text-indent: 30px; /* Added indentation */
+    /* max-width, margin-left, margin-right, width handled by .section-content-wrapper and its flex properties */
+}
+
+#about .section-content-wrapper h2,
+#developer .section-content-wrapper h2,
+#projects .section-content-wrapper h2 {
+    text-align: center; /* Ensure h2s are centered within their wrapper */
+    margin-bottom: 20px;
+}
+
+
+/* Developer Section */
+/* #developer h2 is handled by the common rule above */
+
+.developer-card {
+    text-align: center;
+    /* max-width, margin-left, margin-right, width handled by .section-content-wrapper */
+}
+
+.dev-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #4DFFFF;
+}
+
+.developer-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+/* Projects Section */
+/* #projects h2 is handled by the common rule above */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    /* max-width, margin-left, margin-right, width handled by .section-content-wrapper */
+}
+
+.project-card {
+    background-color: rgba(20, 30, 50, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(77, 255, 255, 0.3);
+}
+
+.project-card img {
+    width: 100%;
+    max-width: 250px; /* Control project image size */
+    height: 150px;
+    object-fit: contain; /* Changed from cover to contain to prevent clipping */
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 15px;
+    background-color: #4DFFFF;
+    color: #050a14;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.project-link:hover {
+    background-color: #88FFFF;
+    text-decoration: none;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px; /* Original padding */
+    background-color: rgba(5, 10, 20, 0.9);
+    color: #E0E8FF;
+    margin-top: 40px; /* Restore margin-top, not a snap target */
+    font-size: 1.1rem; /* Increased font size for footer */
+    /* Remove height, scroll-snap-align if they were part of a common rule before */
+    width: 100%; /* Ensure footer takes full width */
+    box-sizing: border-box;
+}
+
+footer p { /* Direct styling for footer paragraph */
+   max-width: 1000px; /* Constrain width */
+   margin: 0 auto; /* Center the paragraph */
+   width: 100%;
+   text-align: center;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .hero .tagline {
+        font-size: 1.2rem;
+    }
+    header.hero,
+    section { /* Footer not included in this padding rule for snap areas */
+        padding: 20px 15px; /* Adjust padding for snap areas on smaller screens */
+    }
+    .section-content-wrapper {
+        padding: 30px 15px; /* Adjust internal padding of content blocks */
+    }
+     footer {
+        padding: 20px 15px; /* Adjust footer padding too */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero .tagline {
+        font-size: 1rem;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr; /* Stack projects on small screens */
+    }
+    header.hero,
+    section {
+        padding: 15px 10px; /* Further adjust padding for snap areas */
+    }
+    .section-content-wrapper {
+        padding: 20px 10px; /* Adjust internal padding of content blocks */
+    }
+    footer {
+        padding: 15px 10px; /* Adjust footer padding too */
+    }
+}
