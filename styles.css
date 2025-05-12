@@ -7,14 +7,36 @@ body {
     margin: 0;
     font-family: 'Lato', sans-serif;
     background-color: #050a14; /* Dark fallback */
-    background-image: url('oop.jpg'); /* User-provided background */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Keeps background stationary during scroll */
+    background-image: none; /* Will be handled by dedicated layers */
+    /* background-size, background-position, background-attachment removed from body */
     color: #E0E8FF; /* Light, slightly desaturated blue for text */
     line-height: 1.6;
     overflow-x: hidden; /* Prevent horizontal scroll */
     scroll-snap-type: y mandatory; /* Enable vertical scroll snapping */
+    /* transition for background-image removed from body */
+}
+
+.background-layer-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -10; /* Ensure it's well behind all other content */
+    overflow: hidden; /* Important for clipping the scrolling layers */
+}
+
+.background-layer {
+    position: absolute; /* Positioned within the container */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* transform: translateY(0); Default state, will be manipulated by JS */
+    transition: transform 1s cubic-bezier(0.42, 0, 0.58, 1); /* Smooth 1s scroll animation */
 }
 
 h1, h2, h3 {
@@ -76,17 +98,21 @@ section {
 /* Hero Section */
 .hero {
     text-align: center;
-    background-color: rgba(0,0,0,0.2); /* Slight darkening overlay for hero text readability */
+    /* background-color: rgba(0,0,0,0.2); */ /* REMOVED: Moved to .hero-content */
     /* min-height, scroll-snap-align, display, padding etc. from common rule */
+    background-color: transparent; /* Ensure hero section itself is transparent */
 }
 
 .hero-content {
     max-width: 1000px;
-    width: 100%;
+    width: 100%; /* Takes available width up to max-width */
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* No background/border/shadow for hero-content, it's part of the hero's full-width feel */
+    background-color: rgba(0,0,0,0.3); /* ADDED: Slight darkening overlay for hero text readability */
+    padding: 30px 40px; /* ADDED: Padding inside the hero content background */
+    border-radius: 8px; /* ADDED: Rounded corners for the hero content background */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Optional: subtle shadow for depth */
 }
 
 .hero-content h1 {

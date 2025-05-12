@@ -8,6 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="background-layer-container">
+        <div class="background-layer" id="bgLayer1"></div>
+        <div class="background-layer" id="bgLayer2"></div>
+    </div>
     <header class="hero" id="home">
         <div class="hero-content">
             <h1>ZeroSequels</h1>
@@ -119,6 +123,74 @@
                     }
                 });
             });
+        });
+
+        // Background image changer with scrolling animation
+        const bgLayer1 = document.getElementById('bgLayer1');
+        const bgLayer2 = document.getElementById('bgLayer2');
+        let activeLayer = bgLayer1;
+        let inactiveLayer = bgLayer2;
+        let currentBgImage = ""; // Store the URL of the current image on the active layer
+
+        const sectionsToObserve = [
+            { id: 'home', image: "url('oop.jpg')" },
+            { id: 'about', image: "url('oop.jpg')" },
+            { id: 'developer', image: "url('waves.jpg')" },
+            { id: 'projects', image: "url('waves.jpg')" } // Changed to waves.jpg
+        ];
+
+        // Initialize first background
+        const initialSectionData = sectionsToObserve.find(s => s.id === 'home');
+        if (initialSectionData) {
+            activeLayer.style.backgroundImage = initialSectionData.image;
+            activeLayer.style.transform = 'translateY(0%)';
+            inactiveLayer.style.transform = 'translateY(100%)'; // Position off-screen below
+            currentBgImage = initialSectionData.image;
+        }
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5 // Trigger when 50% of the section is visible
+        };
+
+        const backgroundObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionData = sectionsToObserve.find(s => s.id === entry.target.id);
+                    if (sectionData && sectionData.image !== currentBgImage) {
+                        // New image is different, prepare transition
+                        inactiveLayer.style.backgroundImage = sectionData.image;
+                        
+                        // Instantly move inactive layer to starting position (bottom)
+                        // No transition for this setup move
+                        inactiveLayer.style.transition = 'none'; 
+                        inactiveLayer.style.transform = 'translateY(100%)';
+
+                        // Force reflow to apply the no-transition style before re-enabling it
+                        void inactiveLayer.offsetHeight; 
+
+                        // Re-enable transition for the animation
+                        activeLayer.style.transition = 'transform 1s cubic-bezier(0.42, 0, 0.58, 1)';
+                        inactiveLayer.style.transition = 'transform 1s cubic-bezier(0.42, 0, 0.58, 1)';
+
+                        // Animate layers
+                        activeLayer.style.transform = 'translateY(-100%)'; // Current scrolls up out
+                        inactiveLayer.style.transform = 'translateY(0%)';   // New scrolls up in
+
+                        // Swap active and inactive layers and update current image
+                        [activeLayer, inactiveLayer] = [inactiveLayer, activeLayer];
+                        currentBgImage = sectionData.image;
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sectionsToObserve.forEach(sectionConfig => {
+            const element = document.getElementById(sectionConfig.id);
+            if (element) {
+                backgroundObserver.observe(element);
+            }
         });
     </script>
 </body>
