@@ -292,17 +292,25 @@ section {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, 300px); /* Increased square size */
+    gap: 25px; /* Increased gap slightly */
+    justify-content: center; /* Center items in the grid */
+    width: 100%; /* Ensure it takes full width of its parent */
     /* max-width, margin-left, margin-right, width handled by .section-content-wrapper */
 }
 
 .project-card {
     background-color: rgba(20, 30, 50, 0.8);
-    padding: 20px;
+    width: 300px; /* Increased fixed width */
+    height: 300px; /* Increased fixed height to make it square */
     border-radius: 8px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevent content spill */
+    padding: 15px; /* Increased padding */
+    box-sizing: border-box; /* Include padding in width/height */
 }
 
 .project-card:hover {
@@ -312,31 +320,96 @@ section {
 
 .project-card img {
     width: 100%;
-    max-width: 250px; /* Control project image size */
-    height: 150px;
-    object-fit: contain; /* Changed from cover to contain to prevent clipping */
+    height: 140px; /* Increased height for image part */
+    object-fit: contain; /* Changed from cover to contain to show full image */
     border-radius: 4px;
-    margin-bottom: 15px;
+    margin-bottom: 10px; /* Adjusted margin */
 }
 
 .project-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.3rem; /* Adjusted font size */
+    margin-bottom: 8px; /* Adjusted margin */
+    color: #E0E8FF;
 }
 
-.project-link {
+.project-description {
+    flex-grow: 1; /* Allow description to take available space */
+    overflow-y: auto; /* Scroll if content overflows */
+    font-size: 0.9rem; /* Adjusted font size */
+    line-height: 1.4;
+    margin-bottom: 10px; /* Space before button */
+    text-align: left; /* Align text to left for readability */
+}
+
+.project-description .short-desc {
+    margin-bottom: 5px; /* Space between short desc and full desc toggle */
+}
+.project-description .full-desc p {
+    margin-bottom: 5px; /* Space between paragraphs in full desc */
+}
+
+
+.project-link { /* This is the "Learn more" button */
     display: inline-block;
-    margin-top: 15px;
-    padding: 8px 15px;
+    padding: 8px 12px; /* Adjusted padding */
     background-color: #4DFFFF;
     color: #050a14;
     border-radius: 4px;
     font-weight: bold;
+    font-size: 0.9rem; /* Adjusted font size */
+    margin-top: auto; 
+    align-self: center; /* Center button */
 }
 
 .project-link:hover {
     background-color: #88FFFF;
     text-decoration: none;
+}
+
+/* Project Detail Page Styles */
+#project-detail .section-content-wrapper {
+    align-items: flex-start; /* Align content to the left */
+    text-align: left;
+}
+
+#project-detail h2 {
+    text-align: center; /* Center the main project title */
+    width: 100%;
+    margin-bottom: 25px;
+    font-size: 2.5rem;
+}
+
+.project-detail-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px; /* Limit image height */
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 0 auto 25px auto; /* Center image and add margin below */
+    display: block;
+}
+
+.project-full-description p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.project-full-description strong {
+    color: #88FFFF; /* Lighter accent for strong tags */
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    color: #4DFFFF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #88FFFF;
+    text-decoration: underline;
 }
 
 /* Footer */

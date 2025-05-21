@@ -109,32 +109,25 @@
                     <img src="agency.jpg" alt="Polybius Project Image">
                     <h3>Polybius</h3>
                     <div class="project-description">
-                        <p class="short-desc"><strong>Polybius Summary</strong><br>Polybius is a powerful software tool designed to streamline video game localization for projects developed in the Godot game engine. Named after the Greek historian Polybius, renowned for his detailed accounts of diverse cultures and languages, the software enables developers to efficiently adapt games for global audiences.</p>
-                        <div class="full-desc" style="display: none;">
-                            <p><strong>Key Features:</strong><br>Godot Project Analysis: Polybius scans a Godot project to extract all translatable strings, including dialogue, UI text, and in-game content, ensuring comprehensive localization coverage.<br><br>CSV Artifact Generation: The software automatically creates a CSV file containing all extracted localization strings, structured for easy editing and collaboration, serving as a central resource for translation management.<br><br>New Language Integration: Developers can add support for new languages by entering a language code (e.g., "es" for Spanish or "ja" for Japanese). The software updates the CSV file with new columns for seamless translation input.<br><br>Translation Review and Error Detection: Polybius features a robust review system that identifies potential translation issues, such as missing strings, inconsistent terminology, or formatting errors, ensuring high-quality, accurate localizations.<br><br>By offering automated string extraction, flexible language management, and quality assurance, Polybius streamlines the localization process, empowering developers to deliver culturally relevant and polished gaming experiences to players worldwide.</p>
-                        </div>
+                        <p class="short-desc"><strong>Polybius Summary</strong><br>Polybius is a powerful software tool designed to streamline video game localization for projects developed in the Godot game engine. Named after the Greek historian Polybius, renowned for his detailed accounts of diverse cultures and languages, the software enabl...</p>
                     </div>
-                    <button class="learn-more-btn project-link">Learn more</button>
+                    <a href="polybius.html" class="learn-more-btn project-link">Learn more</a>
                 </div>
                 <div class="project-card">
                     <img src="HaikuNews7.png" alt="HaikuNews7 Project Image">
                     <h3>HaikuNews7</h3>
                     <div class="project-description">
-                        <p class="short-desc"><strong>Project Summary: HaikuNews7</strong><br>Overview: HaikuNews7 is an innovative, under-construction personal portfolio project that blends automation, art, and storytelling to deliver unique social media content. Leveraging n8n for workflow automation and Perplexity for real-time data scraping, HaikuNews7 curates trending news stories in geopolitics and global economics, transforming them into visually and poetically engaging posts.</p>
-                        <div class="full-desc" style="display: none;">
-                            <p><strong>Core Features:</strong><br>
-                                &bull; Automated News Aggregation: Uses Perplexity to scrape and filter trending stories related to geopolitics and global economics.<br>
-                                &bull; Artistic Visualization: Generates Japanese ink block-style paintings inspired by each news story’s content, creating a striking visual representation.<br>
-                                &bull; Poetic Summarization: Crafts a haiku for each story, distilling complex news into concise, evocative poetry.<br>
-                                &bull; Social Media Integration: Automates content creation and posting via n8n workflows, ensuring consistent and timely updates.
-                            </p>
-                            <p><strong>Purpose:</strong> HaikuNews7 showcases technical proficiency in automation (n8n), AI-driven content generation, and creative expression through art and poetry. It aims to engage audiences with a fusion of cultural aesthetics and insightful commentary on global issues.</p>
-                            <p><strong>Status:</strong> Currently in development, with ongoing refinements to the automation pipeline, art generation, and haiku composition processes.</p>
-                            <p><strong>Technologies:</strong> n8n, Perplexity, AI-driven image generation, social media APIs.</p>
-                            <p><em>This project highlights my ability to combine cutting-edge technology with creative storytelling, delivering a unique and thought-provoking content experience.</em></p>
-                        </div>
+                        <p class="short-desc"><strong>Project Summary: HaikuNews7</strong><br>Overview: HaikuNews7 is an innovative, under-construction personal portfolio project that blends automation, art, and storytelling to deliver unique social media content. Leveraging n8n for workflow automation and Perplexity for real-time data scraping, HaikuNe...</p>
                     </div>
-                    <button class="learn-more-btn project-link">Learn more</button>
+                    <a href="haikunews7.html" class="learn-more-btn project-link">Learn more</a>
+                </div>
+                <div class="project-card">
+                    <img src="projects.jpg" alt="MK-ULTRA Psychic Defense Project Image">
+                    <h3>MK-ULTRA Psychic Defense</h3>
+                    <div class="project-description">
+                        <p class="short-desc"><strong>MK-ULTRA Psychic Defense Summary</strong><br>MK-ULTRA Psychic Defense is a rogue-like tower defense game on Steam, released on December 2, 2024. In this psychedelic-themed game, you play as a young Ted Kaczynski, navigating the horrors of the CIA's MK-ULTRA program. The objective is to use unique, eso...</p>
+                    </div>
+                    <a href="mkultra.html" class="learn-more-btn project-link">Learn more</a>
                 </div>
             </div>
             </div>
@@ -358,38 +351,10 @@
         
         // --- Main Setup on DOMContentLoaded ---
         async function mainSetup() {
-            // First, set up the non-Three.js parts
-            const projectCards = document.querySelectorAll('.project-card');
-            projectCards.forEach(card => {
-                const learnMoreBtn = card.querySelector('.learn-more-btn');
-                const fullDesc = card.querySelector('.full-desc');
-                // const shortDesc = card.querySelector('.short-desc'); // Not used in this part
-
-                if (learnMoreBtn && fullDesc) { // Removed shortDesc from condition
-                    learnMoreBtn.addEventListener('click', function (event) {
-                        event.stopPropagation(); 
-                        const isHidden = fullDesc.style.display === 'none';
-                        fullDesc.style.display = isHidden ? 'block' : 'none';
-                        learnMoreBtn.textContent = isHidden ? 'Show less' : 'Learn more';
-                    });
-                }
-            });
-
-            document.addEventListener('click', function (event) {
-                projectCards.forEach(card => {
-                    const learnMoreBtn = card.querySelector('.learn-more-btn');
-                    const fullDesc = card.querySelector('.full-desc');
-                    if (fullDesc && learnMoreBtn) {
-                        if (!card.contains(event.target) && fullDesc.style.display === 'block') {
-                            fullDesc.style.display = 'none';
-                            learnMoreBtn.textContent = 'Learn more';
-                        }
-                    }
-                });
-            });
+            // Project card functionality removed as per new requirements
             
             // Now handle background setup
-            await fetchShaders(); 
+            await fetchShaders();
 
             if (USE_SHADER_BACKGROUND) {
                 activateShader(sectionsToObserve.find(s => s.id === 'home')?.shaderEffect || 'heroShaderEffect');
