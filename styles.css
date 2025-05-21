@@ -301,8 +301,9 @@ section {
 
 .project-card {
     background-color: rgba(20, 30, 50, 0.8);
-    width: 300px; /* Increased fixed width */
-    height: 300px; /* Increased fixed height to make it square */
+    width: 300px; /* Fixed width */
+    height: auto; /* Allow height to adjust to content */
+    min-height: 300px; /* Maintain a minimum height */
     border-radius: 8px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -334,7 +335,7 @@ section {
 
 .project-description {
     flex-grow: 1; /* Allow description to take available space */
-    overflow-y: auto; /* Scroll if content overflows */
+    /* overflow-y: auto; Removed to make all text visible */
     font-size: 0.9rem; /* Adjusted font size */
     line-height: 1.4;
     margin-bottom: 10px; /* Space before button */
