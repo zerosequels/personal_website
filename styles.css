@@ -413,6 +413,15 @@ section {
     text-decoration: underline;
 }
 
+/* Specific background for project detail pages */
+body.body-project-detail-page {
+    background-image: url('projects.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
 /* Footer */
 footer {
     text-align: center;
@@ -463,7 +472,12 @@ footer p { /* Direct styling for footer paragraph */
     }
     .projects-grid {
         grid-template-columns: 1fr; /* Stack projects on small screens */
-        justify-items: center; /* Center the card when it's a single column */
+        justify-items: center; /* Center the grid item (the card) within its column */
+    }
+    .project-card { /* Specific adjustments for project card in single column mobile view */
+        width: 90%; /* Allow card to take most of the column width */
+        max-width: 300px; /* But don't let it exceed its original design width */
+        /* height: auto and min-height: 300px still apply from the general rule */
     }
     header.hero,
     section {
