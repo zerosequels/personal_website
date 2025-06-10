@@ -186,6 +186,63 @@ section {
     vertical-align: middle; /* Align icons nicely if text were next to them */
 }
 
+/* Business Contact Section */
+.business-contact {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.business-contact h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #4DFFFF;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.email-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Allow wrapping on very small screens */
+}
+
+.email-text {
+    font-size: 1rem;
+    color: #E0E8FF;
+    font-family: 'Lato', sans-serif;
+    background-color: rgba(20, 30, 50, 0.6);
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(77, 255, 255, 0.3);
+}
+
+.copy-button {
+    background: none;
+    border: 1px solid #4DFFFF;
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    color: #4DFFFF;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-button:hover {
+    background-color: #4DFFFF;
+    color: #050a14;
+    transform: scale(1.05);
+}
+
+.copy-button svg {
+    width: 18px;
+    height: 18px;
+}
+
 
 /* About Section */
 #about h2 {
@@ -462,6 +519,27 @@ section {
 
 .github-button:hover {
     background-color: #444d56; /* Lighter gray on hover */
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.kofi-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #ff5e5b; /* Ko-fi's red color */
+    color: #ffffff; /* White text */
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    border: 1px solid #ff5e5b;
+    margin-left: 15px; /* Space between buttons */
+}
+
+.kofi-button:hover {
+    background-color: #ff7875; /* Lighter red on hover */
     color: #ffffff;
     text-decoration: none;
     transform: translateY(-2px);
