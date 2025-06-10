@@ -447,6 +447,26 @@ section {
     transform: translateY(-2px);
 }
 
+.github-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #24292e; /* GitHub's dark gray */
+    color: #ffffff; /* White text */
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    border: 1px solid #444d56; /* GitHub's border color */
+}
+
+.github-button:hover {
+    background-color: #444d56; /* Lighter gray on hover */
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
 
 /* Specific background for project detail pages */
 body.body-project-detail-page {

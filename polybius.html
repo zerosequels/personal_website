@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polybius - Project Details</title>
+    <title>Polybius - Godot MCP Server - Project Details</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -11,11 +11,29 @@
     <section id="project-detail">
         <div class="section-content-wrapper">
             <a href="index.html#projects" class="back-link">&larr; Back to Projects</a>
-            <h2>Polybius</h2>
+            <h2>Polybius - Godot MCP Server</h2>
             <img src="agency.jpg" alt="Polybius Project Image" class="project-detail-image">
             <div class="project-full-description">
-                <p><strong>Polybius Summary</strong><br>Polybius is a powerful software tool designed to streamline video game localization for projects developed in the Godot game engine. Named after the Greek historian Polybius, renowned for his detailed accounts of diverse cultures and languages, the software enables developers to efficiently adapt games for global audiences.</p>
-                <p><strong>Key Features:</strong><br>Godot Project Analysis: Polybius scans a Godot project to extract all translatable strings, including dialogue, UI text, and in-game content, ensuring comprehensive localization coverage.<br><br>CSV Artifact Generation: The software automatically creates a CSV file containing all extracted localization strings, structured for easy editing and collaboration, serving as a central resource for translation management.<br><br>New Language Integration: Developers can add support for new languages by entering a language code (e.g., "es" for Spanish or "ja" for Japanese). The software updates the CSV file with new columns for seamless translation input.<br><br>Translation Review and Error Detection: Polybius features a robust review system that identifies potential translation issues, such as missing strings, inconsistent terminology, or formatting errors, ensuring high-quality, accurate localizations.<br><br>By offering automated string extraction, flexible language management, and quality assurance, Polybius streamlines the localization process, empowering developers to deliver culturally relevant and polished gaming experiences to players worldwide.</p>
+                <p><strong>Polybius Summary</strong><br>Polybius is a revolutionary MCP (Model Context Protocol) server that creates a seamless bridge between Claude Desktop and the Godot game engine editor. Through natural language commands, you can now build entire games, manage assets, configure projects, and create complex scenes - all powered by AI.</p>
+
+                <p><strong>Architecture Overview:</strong><br>The system consists of two main components: a GDScript editor plugin that exposes Godot functionality via HTTP API, and a Python MCP server implementing 21+ tools for complete game development workflow. The architecture enables seamless communication: Claude Desktop ↔ MCP Protocol (JSON-RPC 2.0) ↔ Python MCP Server ↔ HTTP API ↔ Godot Plugin ↔ Godot Editor.</p>
+
+                <p><strong>Current Features (Phase 2 Complete):</strong><br>
+                <strong>Scene Management (11 Tools):</strong> Create scenes with smart root node selection, open existing scenes, manage current scene information, list all project scenes, duplicate scenes with automatic naming, safely remove scene files, add 11+ node types (UI, Physics, Graphics, Audio), remove nodes with safety protection, reparent and reorder scene nodes, read and modify node properties.<br><br>
+                <strong>Script Management (5 Tools):</strong> Generate GDScript files with templates and node attachment, enumerate all project scripts, view and edit script content, safely remove script files.<br><br>
+                <strong>Asset Management (3 Tools):</strong> Import external files (images, audio, models, fonts) with organized storage, browse project resources with filtering and metadata, move/rename assets with reference tracking.<br><br>
+                <strong>Project Management (3 Tools):</strong> Read project.godot configuration, update project settings programmatically, build/export projects with preset management.</p>
+
+                <p><strong>Usage Examples:</strong><br>Once installed, Claude can control Godot through natural language commands like "Create a new 2D platformer scene called 'Level1' with a CharacterBody2D player", "Import these sprites from my Desktop into the textures folder", "Set the main scene to MainMenu.tscn and change the window size to 1920x1080", or "Create a player controller script with basic movement and add a jump mechanic".</p>
+
+                <p><strong>Development Status:</strong><br>Currently featuring 21 implemented MCP tools, 22 functional REST endpoints, support for 11 core Godot node types, and 7 asset categories. The project is actively developed with Phase 3 focusing on UI Management tools including positioning, anchoring, layout management, and theme support.</p>
+            </div>
+
+            <div class="steam-link-section">
+                <h3>Get Polybius</h3>
+                <a href="https://github.com/zerosequels/polybius" target="_blank" rel="noopener noreferrer" class="github-button">
+                    Available on GitHub
+                </a>
             </div>
         </div>
     </section>
