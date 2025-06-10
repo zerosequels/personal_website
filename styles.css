@@ -207,6 +207,7 @@ section {
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap; /* Allow wrapping on very small screens */
+    position: relative; /* For tooltip positioning */
 }
 
 .email-text {
@@ -241,6 +242,41 @@ section {
 .copy-button svg {
     width: 18px;
     height: 18px;
+}
+
+/* Tooltip for copy button */
+.copy-tooltip {
+    position: absolute;
+    background-color: #4DFFFF;
+    color: #050a14;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    white-space: nowrap;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+}
+
+.copy-tooltip.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.copy-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border: 5px solid transparent;
+    border-top-color: #4DFFFF;
 }
 
 

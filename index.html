@@ -415,20 +415,43 @@
         // Copy email function
         function copyEmail() {
             const email = 'zerosequels@zerosequels.com';
-            navigator.clipboard.writeText(email).then(() => {
-                // Visual feedback - briefly change button appearance
-                const button = document.querySelector('.copy-button');
-                const originalColor = button.style.backgroundColor;
-                button.style.backgroundColor = '#4DFFFF';
-                button.style.color = '#050a14';
+            
+            // Function to show tooltip
+            function showTooltip() {
+                const emailContainer = document.querySelector('.email-container');
                 
-                // Reset after a short delay
+                // Remove any existing tooltip
+                const existingTooltip = document.querySelector('.copy-tooltip');
+                if (existingTooltip) {
+                    existingTooltip.remove();
+                }
+                
+                // Create tooltip element
+                const tooltip = document.createElement('div');
+                tooltip.className = 'copy-tooltip';
+                tooltip.textContent = 'Copied!';
+                
+                // Add tooltip to container
+                emailContainer.appendChild(tooltip);
+                
+                // Trigger animation
                 setTimeout(() => {
-                    button.style.backgroundColor = '';
-                    button.style.color = '';
-                }, 200);
+                    tooltip.classList.add('show');
+                }, 10);
                 
-                // Optional: Show a tooltip or brief message
+                // Remove tooltip after delay
+                setTimeout(() => {
+                    tooltip.classList.remove('show');
+                    setTimeout(() => {
+                        if (tooltip.parentNode) {
+                            tooltip.remove();
+                        }
+                    }, 300);
+                }, 1500);
+            }
+            
+            navigator.clipboard.writeText(email).then(() => {
+                showTooltip();
                 console.log('Email copied to clipboard!');
             }).catch(err => {
                 console.error('Failed to copy email: ', err);
@@ -439,6 +462,7 @@
                 textArea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
+                showTooltip();
                 console.log('Email copied to clipboard (fallback method)!');
             });
         }
